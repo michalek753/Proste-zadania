@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+
+	<style>
+		.btn{
+			width: 50px;
+			font-size: 20px;
+		}
+		.form-control{
+			width:212px;
+			height:50px;
+			margin-bottom: 10px;
+		}
+		#display{
+			width:252px;
+			margin: auto;
+			padding: 20px;
+			background-color: #666;
+		}
+		.form-control{
+			font-size: 20px;
+			text-align: right;
+		}
+		footer{
+			color: white;
+			text-align: center;
+		}
+
+
+
+	</style>
+</head>
+<body>
+		<div id="display">
+			<input type="text" maxlength="10" class="form-control" id="result" size="20" readonly="readonly">
+			
+			<div class="keys">
+				<p>
+					<input type="button" class="btn btn-primary disabled" value="%">
+					<input type="button" class="btn btn-primary" value="(" onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-primary" value=")" onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-primary" value="/" onclick='getDigit(this.value)'>				
+				</p>
+				<p>
+					<input type="button" class="btn" value="7" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="8" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="9" onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-primary" value="*" onclick='getDigit(this.value)'>				
+				</p>
+				<p>
+					<input type="button" class="btn" value="4" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="5" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="6" onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-primary" value="-" onclick='getDigit(this.value)'>				
+				</p>
+				<p>
+					<input type="button" class="btn" value="1" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="2" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="3" onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-primary" value="+" onclick='getDigit(this.value)'>				
+				</p>
+				<p>
+					<input type="button" class="btn" value="0" onclick='getDigit(this.value)'>
+					<input type="button" class="btn" value="." onclick='getDigit(this.value)'>
+					<input type="button" class="btn btn-danger" value="C" onclick='c("")'>
+					<input type="button" class="btn btn-success" value="=" onclick='calc(this.value)'>				
+				</p>			
+			</div>
+			<footer>Michal's Calculator</footer>
+
+
+		</div>
+	<script type="text/javascript">
+		function c(val) {
+			document.getElementById("result").value=val;
+		}
+		function getDigit(val) {
+			if(document.getElementById("result").value.length<16){
+			document.getElementById("result").value+=val;
+			}else{
+				c("Error! Too long!");
+			}
+
+		}
+		function calc() {
+			try{
+				c(eval(document.getElementById("result").value));
+			}
+			catch(err){
+				c('Error');
+			}
+		}
+	</script>
+</body>
+</html>
